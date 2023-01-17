@@ -21,11 +21,11 @@ function App () {
       setError( true )
       setMensajeError( '⛔️ Todos los campos son obligatorios' )
       return
+    } else {
+      setColaboradores( [...colaboradores, nuevoColaborador] )
+      setNombre( '' )
+      setCorreo( '' )
     }
-
-    setColaboradores( [...colaboradores, nuevoColaborador] )
-    setNombre( '' )
-    setCorreo( '' )
   }
 
   return (
@@ -58,14 +58,27 @@ function App () {
         <button className='btn btn-primary mt-2'>Agregar</button>
       </form>
       <hr />
-      <ul>
-        { colaboradores.map( colaborador => (
-          <li key={ colaborador.id }>
-            <p>{ colaborador.nombre } - { colaborador.correo }</p>
-          </li>
-        ) ) }
-      </ul>
-    </div>
+      <h3>Listado de Colaboradores</h3>
+      <hr />
+      <table className='table table-hover'>
+        <thead>
+          <tr>
+            <th>id</th>
+            <th>Nombre</th>
+            <th>Correo</th>
+          </tr>
+        </thead>
+        <tbody>
+          { colaboradores.map( colaborador => (
+            <tr key={ colaborador.id }>
+              <td>{ colaborador.id }</td>
+              <td>{ colaborador.nombre }</td>
+              <td>{ colaborador.correo }</td>
+            </tr>
+          ) ) }
+        </tbody>
+      </table>
+    </div >
   );
 }
 
