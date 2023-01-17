@@ -7,7 +7,7 @@ function App () {
   const [nombre, setNombre] = useState( '' )
   const [correo, setCorreo] = useState( '' )
 
-  const enviarFormulario = ( e ) => {
+  const agregarColaborador = ( e ) => {
     e.preventDefault()
     const nuevoColaborador = {
       id: colaboradores.length + 1,
@@ -23,7 +23,7 @@ function App () {
 
   return (
     <div className="container">
-      <form onSubmit={ enviarFormulario }>
+      <form onSubmit={ agregarColaborador }>
         <div className='form-group mt-3'>
           <label>Nombre</label>
           <input
