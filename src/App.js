@@ -30,6 +30,12 @@ function App () {
 
   return (
     <div className="container">
+
+      <form className='d-flex gap-2 mt-3' role='search'>
+        <input className='form-control' type='search' placeholder='Buscar por nombre' aria-label='search' />
+        <button className='btn btn-dark' type='submit'>Buscar</button>
+      </form>
+
       <form onSubmit={ agregarColaborador }>
         { error && <p className='alert alert-danger mt-3'>{ mensajeError }</p> }
         <div className='form-group mt-3'>
