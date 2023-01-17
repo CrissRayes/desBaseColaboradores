@@ -8,6 +8,7 @@ function App () {
   const [correo, setCorreo] = useState( '' )
   const [error, setError] = useState( false )
   const [mensajeError, setMensajeError] = useState( '' )
+  const [busqueda, setBusqueda] = useState( '' )
 
   const agregarColaborador = ( e ) => {
     e.preventDefault()
@@ -25,15 +26,21 @@ function App () {
       setColaboradores( [...colaboradores, nuevoColaborador] )
       setNombre( '' )
       setCorreo( '' )
+      console.log( colaboradores )
     }
   }
+
 
   return (
     <div className="container">
 
       <form className='d-flex gap-2 mt-3' role='search'>
-        <input className='form-control' type='search' placeholder='Buscar por nombre' aria-label='search' />
-        <button className='btn btn-dark' type='submit'>Buscar</button>
+        <input
+          className='form-control'
+          type='search'
+          placeholder='Buscar por nombre'
+          aria-label='search'
+        />
       </form>
 
       <form onSubmit={ agregarColaborador }>
