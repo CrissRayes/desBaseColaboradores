@@ -44,15 +44,21 @@ function App () {
 
   return (
     <div className="container">
-
-      <input
-        className='form-control mt-3'
-        type='text'
-        placeholder='Buscar por nombre'
-        aria-label='search'
-        value={ busqueda }
-        onChange={ handleSearch }
-      />
+      <nav className='navbar bg-dark'>
+        <div className='container-fluid d-flex align-items-end'>
+          <h3 className='text-white'>Buscador de colaboradores</h3>
+          <div>
+            <input
+              className='form-control'
+              type='text'
+              placeholder='Buscar por nombre'
+              aria-label='search'
+              value={ busqueda }
+              onChange={ handleSearch }
+            />
+          </div>
+        </div>
+      </nav>
 
       <form onSubmit={ agregarColaborador }>
         { error && <p className='alert alert-danger mt-3'>{ mensajeError }</p> }
