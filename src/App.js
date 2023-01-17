@@ -28,6 +28,7 @@ function App () {
           <label>Nombre</label>
           <input
             type='text'
+            placeholder='Nombre'
             className='form-control'
             onChange={ ( e ) => setNombre( e.target.value ) }
             value={ nombre }
@@ -37,6 +38,7 @@ function App () {
           <label>Correo</label>
           <input
             type='email'
+            placeholder='Correo'
             className='form-control'
             onChange={ ( e ) => setCorreo( e.target.value ) }
             value={ correo }
