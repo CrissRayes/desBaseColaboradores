@@ -6,6 +6,8 @@ function App () {
   const [colaboradores, setColaboradores] = useState( BaseColaboradores )
   const [nombre, setNombre] = useState( '' )
   const [correo, setCorreo] = useState( '' )
+  const [error, setError] = useState( false )
+  const [mensajeError, setMensajeError] = useState( '' )
 
   const agregarColaborador = ( e ) => {
     e.preventDefault()
@@ -14,23 +16,32 @@ function App () {
       nombre,
       correo
     }
+
+    if ( nombre.trim() === '' || correo.trim() === '' ) {
+      setError( true )
+      setMensajeError( '⛔️ Todos los campos son obligatorios' )
+      return
+    }
+
     setColaboradores( [...colaboradores, nuevoColaborador] )
     setNombre( '' )
     setCorreo( '' )
   }
 
-
-
   return (
     <div className="container">
       <form onSubmit={ agregarColaborador }>
+        { error && <p className='alert alert-danger mt-3'>{ mensajeError }</p> }
         <div className='form-group mt-3'>
           <label>Nombre</label>
           <input
             type='text'
             placeholder='Nombre'
             className='form-control'
-            onChange={ ( e ) => setNombre( e.target.value ) }
+            onChange={ ( e ) => {
+              setNombre( e.target.value )
+              setError( false )
+            } }
             value={ nombre }
           />
         </div>
