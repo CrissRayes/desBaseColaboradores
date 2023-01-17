@@ -26,22 +26,33 @@ function App () {
       setColaboradores( [...colaboradores, nuevoColaborador] )
       setNombre( '' )
       setCorreo( '' )
-      console.log( colaboradores )
     }
   }
 
+  const handleSearch = ( e ) => {
+    setBusqueda( e.target.value )
+  }
+
+  let resultadoBusqueda = []
+  if ( !busqueda ) {
+    resultadoBusqueda = colaboradores
+  } else {
+    resultadoBusqueda = colaboradores.filter( colaborador => {
+      return colaborador.nombre.toLowerCase().includes( busqueda.toLowerCase() )
+    } )
+  }
 
   return (
     <div className="container">
 
-      <form className='d-flex gap-2 mt-3' role='search'>
-        <input
-          className='form-control'
-          type='search'
-          placeholder='Buscar por nombre'
-          aria-label='search'
-        />
-      </form>
+      <input
+        className='form-control mt-3'
+        type='text'
+        placeholder='Buscar por nombre'
+        aria-label='search'
+        value={ busqueda }
+        onChange={ handleSearch }
+      />
 
       <form onSubmit={ agregarColaborador }>
         { error && <p className='alert alert-danger mt-3'>{ mensajeError }</p> }
@@ -82,7 +93,7 @@ function App () {
           </tr>
         </thead>
         <tbody>
-          { colaboradores.map( colaborador => (
+          { resultadoBusqueda.map( colaborador => (
             <tr key={ colaborador.id }>
               <td>{ colaborador.id }</td>
               <td>{ colaborador.nombre }</td>
