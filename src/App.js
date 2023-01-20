@@ -10,6 +10,16 @@ function App () {
   const [mensajeError, setMensajeError] = useState( '' )
   const [busqueda, setBusqueda] = useState( '' )
 
+  const handleChange = ( e ) => {
+    if ( e.target.name === 'nombre' ) {
+      setNombre( e.target.value )
+      setError( false )
+    } else if ( e.target.name === 'correo' ) {
+      setCorreo( e.target.value )
+      setError( false )
+    }
+  }
+
   const handleSubmit = ( e ) => {
     e.preventDefault()
     const nuevoColaborador = {
@@ -65,23 +75,22 @@ function App () {
         <div className='form-group mt-3'>
           <label>Nombre</label>
           <input
+            name='nombre'
             type='text'
             placeholder='Nombre'
             className='form-control'
-            onChange={ ( e ) => {
-              setNombre( e.target.value )
-              setError( false )
-            } }
+            onChange={ handleChange }
             value={ nombre }
           />
         </div>
         <div className='form-group'>
           <label>Correo</label>
           <input
+            name='correo'
             type='email'
             placeholder='Correo'
             className='form-control'
-            onChange={ ( e ) => setCorreo( e.target.value ) }
+            onChange={ handleChange }
             value={ correo }
           />
         </div>
