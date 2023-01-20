@@ -10,7 +10,7 @@ function App () {
   const [mensajeError, setMensajeError] = useState( '' )
   const [busqueda, setBusqueda] = useState( '' )
 
-  const agregarColaborador = ( e ) => {
+  const handleSubmit = ( e ) => {
     e.preventDefault()
     const nuevoColaborador = {
       id: colaboradores.length + 1,
@@ -60,7 +60,7 @@ function App () {
         </div>
       </nav>
 
-      <form onSubmit={ agregarColaborador }>
+      <form onSubmit={ handleSubmit }>
         { error && <p className='alert alert-danger mt-3'>{ mensajeError }</p> }
         <div className='form-group mt-3'>
           <label>Nombre</label>
