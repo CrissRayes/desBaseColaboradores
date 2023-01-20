@@ -103,7 +103,7 @@ function App () {
       <h3>Listado de Colaboradores</h3>
       <hr />
       { resultadoBusqueda.map( colaborador => (
-        <div className="card mb-3" key={ colaborador.id }>
+        <div className="card mb-3 shadow" key={ colaborador.id }>
           <div className="row no-gutters">
             <div className="col-md-3 d-flex align-items-center justify-content-center">
               <img
