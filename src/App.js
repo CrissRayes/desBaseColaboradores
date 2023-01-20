@@ -1,6 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { useState } from 'react';
 import { BaseColaboradores } from './BaseColaboradores';
+import userAvatar from './img/user.png'
 
 function App () {
   const [colaboradores, setColaboradores] = useState( BaseColaboradores )
@@ -53,7 +54,7 @@ function App () {
   }
 
   return (
-    <div className="container">
+    <div className="container" style={ { maxWidth: "800px" } }>
       <nav className='navbar bg-dark'>
         <div className='container-fluid d-flex align-items-end'>
           <h3 className='text-white'>Buscador de colaboradores</h3>
@@ -99,24 +100,28 @@ function App () {
       <hr />
       <h3>Listado de Colaboradores</h3>
       <hr />
-      <table className='table table-hover'>
-        <thead>
-          <tr>
-            <th>id</th>
-            <th>Nombre</th>
-            <th>Correo</th>
-          </tr>
-        </thead>
-        <tbody>
-          { resultadoBusqueda.map( colaborador => (
-            <tr key={ colaborador.id }>
-              <td>{ colaborador.id }</td>
-              <td>{ colaborador.nombre }</td>
-              <td>{ colaborador.correo }</td>
-            </tr>
-          ) ) }
-        </tbody>
-      </table>
+      { resultadoBusqueda.map( colaborador => (
+        <div className="card mb-3" key={ colaborador.id }>
+          <div className="row no-gutters">
+            <div className="col-md-3 d-flex align-items-center justify-content-center">
+              <img
+                className='card-img rounded-circle border border-primary'
+                src={ userAvatar }
+                alt={ colaborador.nombre }
+                style={ { maxWidth: "100px" } }
+              />
+            </div>
+            <div className="col-md-9">
+              <div className="card-body">
+                <h5 className="card-title">{ colaborador.nombre }</h5>
+                <p className="card-text">{ colaborador.correo }</p>
+                <p className="card-text"><small className="text-muted">id: { colaborador.id }</small></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      ) ) }
+
     </div >
   );
 }
