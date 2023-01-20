@@ -54,8 +54,8 @@ function App () {
   }
 
   return (
-    <div className="container" style={ { maxWidth: "800px" } }>
-      <nav className='navbar bg-dark'>
+    <div className="container mt-3" style={ { maxWidth: "800px" } }>
+      <nav className='navbar bg-dark rounded'>
         <div className='container-fluid d-flex align-items-end'>
           <h3 className='text-white'>Buscador de colaboradores</h3>
           <div>
@@ -71,7 +71,7 @@ function App () {
         </div>
       </nav>
 
-      <form onSubmit={ handleSubmit }>
+      <form onSubmit={ handleSubmit } className="mb-5">
         { error && <p className='alert alert-danger mt-3'>{ mensajeError }</p> }
         <div className='form-group mt-3'>
           <label>Nombre</label>
@@ -95,7 +95,9 @@ function App () {
             value={ correo }
           />
         </div>
-        <button className='btn btn-primary mt-2'>Agregar</button>
+        <div className='d-grid'>
+          <button className='btn btn-primary mt-2'>Agregar</button>
+        </div>
       </form>
       <hr />
       <h3>Listado de Colaboradores</h3>
@@ -113,8 +115,8 @@ function App () {
             </div>
             <div className="col-md-9">
               <div className="card-body">
-                <h5 className="card-title">{ colaborador.nombre }</h5>
-                <p className="card-text">{ colaborador.correo }</p>
+                <h5 className="card-title">Nombre: { colaborador.nombre }</h5>
+                <p className="card-text">Email: { colaborador.correo }</p>
                 <p className="card-text"><small className="text-muted">id: { colaborador.id }</small></p>
               </div>
             </div>
