@@ -48,10 +48,6 @@ function App () {
     return colaborador.nombre.toLowerCase().includes( busqueda.toLowerCase() )
   } )
 
-
-
-
-
   return (
     <div className="container mt-3" style={ { maxWidth: "800px" } }>
       <nav className='navbar bg-dark rounded'>
