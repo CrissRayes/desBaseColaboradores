@@ -44,14 +44,13 @@ function App () {
     setBusqueda( e.target.value )
   }
 
-  let resultadoBusqueda = []
-  if ( !busqueda ) {
-    resultadoBusqueda = colaboradores
-  } else {
-    resultadoBusqueda = colaboradores.filter( colaborador => {
-      return colaborador.nombre.toLowerCase().includes( busqueda.toLowerCase() )
-    } )
-  }
+  const resultadoBusqueda = !busqueda ? colaboradores : colaboradores.filter( colaborador => {
+    return colaborador.nombre.toLowerCase().includes( busqueda.toLowerCase() )
+  } )
+
+
+
+
 
   return (
     <div className="container mt-3" style={ { maxWidth: "800px" } }>
